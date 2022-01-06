@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 
@@ -25,15 +26,26 @@ export class AddUserComponent implements OnInit {
       })
   }
   addItem() {
-    this.items.push(this.inputItem)
-    console.log(this.items)
+    this.http.post("http://localhost:3000/items", {
+      "name":this.inputItem
+  }).subscribe(data => {
+      console.log("Post request:", data);
+    },
+    error => {
+      console.log("Error", error);
+    });
+    this.products.push(this.inputItem)
     this.inputItem = ''
   }
   editItem(i: number) {
       this.editList = true;
   }
   removeItem(id:number) {
-    this.items = this.items.filter((value, i) => i != id);
+    if(confirm('Are you sure ? ')) {
+      this.http.delete("http://localhost:3000/items/"+ id).subscribe(res=> {
+        console.log("DELETE", res)
+      })
+    }
   }
   done() {
     this.editList = false;
