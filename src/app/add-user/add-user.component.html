@@ -1,0 +1,23 @@
+<h2>Default list: </h2>
+<table>
+    <th>List Items: </th>
+    <tr *ngFor="let product of products; let i=index">
+        <td><a routerLink="/add-user/{{i}}">{{ product }}</a></td>
+    </tr>
+</table>
+<div class="adduser">
+    <button class="backbutton" (click)="OnCancel()">Back</button>
+    <p>Add item</p>
+    <input type="text" [(ngModel)]="inputItem" required minlength="4"/> 
+    <button (click)="addItem()">Add</button>
+    <h3>Lists:</h3>
+    <div *ngFor="let item of items; let i = index;">
+        <p (click)="editItem(i)">{{ item }}</p>
+        <div *ngIf="editList">
+            <input type="text" value={{item}}/>
+            <button (click)="done()"> Done </button>
+        </div>
+        <button (click)="removeItem(i)">Remove</button>
+    </div>
+</div>
+<a routerLink="/contact-details">Contact details</a>

@@ -1,0 +1,23 @@
+.adduser {
+    border: 1px dotted;
+    padding: 69px;
+    margin: 41px 587px;
+    background: aliceblue;
+}
+
+button {
+    margin: 5px;
+    padding: 5px;
+}
+
+input {
+    padding: 5px;
+}
+
+table, th, tr, td {
+    border: 1px solid;
+    display: inline-flex;
+}
+td {
+    padding: 15px;
+}
