@@ -1,18 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { identifierName } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  styleUrls: ['./add-user.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AddUserComponent implements OnInit {
+  form = new FormGroup({
+    "user": new FormControl('', [Validators.required])
+  })
   classes = 'special';
   inputItem: string = '';
   items: string[] = [];
   products = Array();
+  showDescription = false;
+  description= Array();
 
   constructor(private router: Router, private http: HttpClient) { }
   editList: boolean = false;
@@ -27,7 +33,8 @@ export class AddUserComponent implements OnInit {
   }
   addItem() {
     this.http.post("http://localhost:3000/items", {
-      "name":this.inputItem
+      "name":this.inputItem,
+      "description": this.description
   }).subscribe(data => {
       console.log("Post request:", data);
     },
@@ -53,6 +60,14 @@ export class AddUserComponent implements OnInit {
   }
   OnCancel() {
     this.router.navigateByUrl("/list");
+  }
+
+  get user() {
+    return this.form.get('user')
+  }
+
+  addDesc() {
+    this.showDescription = true;
   }
 
 }

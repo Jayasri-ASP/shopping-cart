@@ -21,3 +21,6 @@ table, th, tr, td {
 td {
     padding: 15px;
 }
+.alert { 
+    background-color: red;
+}

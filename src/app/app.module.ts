@@ -8,6 +8,8 @@ import { ListComponent } from './list/list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { DefaultItemComponent } from './default-item/default-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomDirectiveDirective } from './custom-directive.directive';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { DefaultItemComponent } from './default-item/default-item.component';
     ListComponent,
     AddUserComponent,
     ContactDetailsComponent,
-    DefaultItemComponent
+    DefaultItemComponent,
+    CustomDirectiveDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
