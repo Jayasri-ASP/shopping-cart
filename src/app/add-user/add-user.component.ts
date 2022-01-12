@@ -69,5 +69,8 @@ export class AddUserComponent implements OnInit {
   addDesc() {
     this.showDescription = true;
   }
-
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('');
+  }
 }

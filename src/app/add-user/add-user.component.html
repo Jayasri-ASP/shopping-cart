@@ -1,6 +1,7 @@
 <div class="adduser">
     <div style="margin-left: 200px;"> <b>Add user</b> </div> 
     <button class="backbutton" (click)="OnCancel()">Back</button>
+    <button (click)="logout()">Logout</button>
     <hr>
     <label>Enter item: </label>
     <input #name="ngModel" type="text" [(ngModel)]="inputItem" required minlength="4"/>   
@@ -18,4 +19,5 @@
         <button (click)="removeItem(i)">Remove</button>
     </div>
 </div>
-<a routerLink="/contact-details">Contact details</a>
+<a routerLink="/contact-details">Contact details</a> |
+<a routerLink="/customers">Customers</a>

@@ -8,8 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DefaultItemComponent implements OnInit {
   products: string = ''
+  showContent:boolean =  false
+  
   constructor(private route: ActivatedRoute) { }
-
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {

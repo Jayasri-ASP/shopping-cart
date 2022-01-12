@@ -4,3 +4,9 @@
 .addItem {
     margin-top: 34px;
 }
+.list {
+    border: 1px dotted;
+    padding: 69px;
+    margin: 41px 587px;
+    background: aliceblue;   
+}

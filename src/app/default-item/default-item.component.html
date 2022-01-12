@@ -1,2 +1,6 @@
 <h3 appCustomDirective>Default item</h3>
-<p>Product Name- {{ products }}</p>
+<p>Product Name- {{ products | uppercase}}</p>
+<div *ngIf="!showContent">
+<ng-content select="[question]"></ng-content>
+</div>
+
