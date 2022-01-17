@@ -32,7 +32,7 @@ export class AddUserComponent implements OnInit {
       })
   }
   addItem() {
-    this.http.post("http://localhost:3000/items", {
+    this.httpService.postRequest({
       "name":this.inputItem,
       "description": this.description
   }).subscribe(data => {
@@ -44,9 +44,9 @@ export class AddUserComponent implements OnInit {
     this.products.push(this.inputItem)
     this.inputItem = ''
   }
-  editItem(i: number) {
+ /* editItem(i: number) {
       this.editList = true;
-  }
+  } */
   removeItem(id:number) {
     if(confirm('Are you sure ? ')) {
       this.httpService.deleteRequest(id).subscribe(res=> {

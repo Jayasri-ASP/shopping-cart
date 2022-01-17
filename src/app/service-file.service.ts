@@ -7,8 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class ServiceFileService {
   url: string = 'http://localhost:3000/items'
-  params = new HttpParams({
-  })
+ 
   constructor(private http: HttpClient) { }
   getPosts() {
     return this.http.get(this.url)
@@ -16,5 +15,9 @@ export class ServiceFileService {
 
   deleteRequest(id: number) {
     return this.http.delete(this.url+'/'+id);
+  }
+
+  postRequest(post: any) {
+    return this.http.post(this.url,post)
   }
 }

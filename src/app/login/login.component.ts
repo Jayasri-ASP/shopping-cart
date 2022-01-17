@@ -14,13 +14,7 @@ export class LoginComponent implements OnInit, OnChanges {
      
  }
  ngOnChanges(changes: SimpleChanges): void {
-     console.log("OnChanges", changes);
-     for (const propName in changes) {
-      const chng = changes[propName];
-      const cur  = JSON.stringify(chng.currentValue);
-      const prev = JSON.stringify(chng.previousValue);
-      console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
-    }    
+     console.log("OnChanges", changes);  
  }
   login() {
     localStorage.setItem('token', "true");

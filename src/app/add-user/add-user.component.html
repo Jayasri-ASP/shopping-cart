@@ -1,7 +1,7 @@
 <div class="adduser">
     <div style="margin-left: 200px;"> <b>Add user</b> </div> 
     <button class="backbutton" (click)="OnCancel()">Back</button>
-    <button (click)="logout()">Logout</button>
+    <button style="margin-left: 370px;background-color: aliceblue;" (click)="logout()">Logout</button>
     <hr>
     <label>Enter item: </label>
     <input #name="ngModel" type="text" [(ngModel)]="inputItem" required minlength="4"/>   
