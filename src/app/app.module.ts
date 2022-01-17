@@ -21,6 +21,7 @@ import { HeroProfileComponent } from './dynamic-component/hero-profile.component
 import { DynamicComponentDirective } from './dynamic-component/dynamic-component.directive';
 import { AdComponent } from './dynamic-component/ad.component';
 import { DynamicComponent } from './dynamic-component/dynamic.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DynamicComponent } from './dynamic-component/dynamic.component';
     HeroJobAdComponent,
     HeroProfileComponent,
     DynamicComponentDirective,
-    DynamicComponent
+    DynamicComponent,
+    DetailsComponent
 
   ],
   imports: [
@@ -59,6 +61,6 @@ import { DynamicComponent } from './dynamic-component/dynamic.component';
       multi: true 
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] // root component
 })
 export class AppModule { }

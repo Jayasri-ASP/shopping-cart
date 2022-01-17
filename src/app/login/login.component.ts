@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, AfterContentChecked, AfterContentInit, AfterViewInit, OnDestroy, AfterViewChecked } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AuthService } from '../auth-service';
 
@@ -7,15 +7,23 @@ import { AuthService } from '../auth-service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  token: string = "123344"
+export class LoginComponent implements OnInit, OnChanges {
+  username: string = 'jayasri'
   constructor(private router: Router, private authService: AuthService) { }
-
-  ngOnInit(): void {
-
-  }
-
+ ngOnInit(): void {
+     
+ }
+ ngOnChanges(changes: SimpleChanges): void {
+     console.log("OnChanges", changes);
+     for (const propName in changes) {
+      const chng = changes[propName];
+      const cur  = JSON.stringify(chng.currentValue);
+      const prev = JSON.stringify(chng.previousValue);
+      console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+    }    
+ }
   login() {
+    localStorage.setItem('token', "true");
     this.router.navigateByUrl('/list');
   }
 }

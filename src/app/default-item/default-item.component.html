@@ -1,6 +1,9 @@
 <h3 appCustomDirective>Default item</h3>
 <p>Product Name- {{ products | uppercase}}</p>
-<div *ngIf="!showContent">
+<!-- <div *ngIf="!showContent">
 <ng-content select="[question]"></ng-content>
-</div>
+</div> -->
 
+<app-details [productdetails]="productdetails"  (newItemEvent)="addItem($event)"></app-details>
+<p>Product details:</p>
+<div *ngFor="let des of description;">{{des}}</div>

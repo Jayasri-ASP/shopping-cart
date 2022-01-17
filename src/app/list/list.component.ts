@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
@@ -12,6 +12,8 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  title: string = ''
+  @Input() username = '';
   constructor(private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
   }
@@ -20,8 +22,8 @@ export class ListComponent implements OnInit {
     this.router.navigateByUrl("/");
   }
   // Create an Observable that will publish a value on an interval
- secondsCounter = interval(1000);
+// secondsCounter = interval(1000);
 // Subscribe to begin publishing values
- subscription = this.secondsCounter.subscribe(n =>
-  console.log(`It's been ${n + 1} seconds since subscribing!`));
+// subscription = this.secondsCounter.subscribe(n =>
+ // console.log(`It's been ${n + 1} seconds since subscribing!`));
 }

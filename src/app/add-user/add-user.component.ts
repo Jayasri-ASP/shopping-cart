@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
+import { ServiceFileService } from '../service-file.service';
 
 @Component({
   selector: 'app-add-user',
@@ -20,11 +21,10 @@ export class AddUserComponent implements OnInit {
   showDescription = false;
   description= Array();
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private httpService: ServiceFileService) { }
   editList: boolean = false;
   ngOnInit(): void {
-    this.http.get("http://localhost:3000/items").subscribe(res => {
-      console.log("res:", res)
+    this.httpService.getPosts().subscribe(res => {
       this.products = Object.values(res).map((obj)=>{
         return obj.name
       })
@@ -49,7 +49,7 @@ export class AddUserComponent implements OnInit {
   }
   removeItem(id:number) {
     if(confirm('Are you sure ? ')) {
-      this.http.delete("http://localhost:3000/items/"+ id).subscribe(res=> {
+      this.httpService.deleteRequest(id).subscribe(res=> {
         console.log("DELETE", res)
       })
     }
