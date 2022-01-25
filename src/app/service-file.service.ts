@@ -13,6 +13,9 @@ export class ServiceFileService {
     return this.http.get(this.url)
   }
 
+  getUsers() {
+    return this.http.get("https://run.mocky.io/v3/1e45e371-a0c9-4b53-92b9-53aaec34b063");
+  }
   deleteRequest(id: number) {
     return this.http.delete(this.url+'/'+id);
   }

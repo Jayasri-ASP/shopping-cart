@@ -12,7 +12,7 @@ import { ServiceFileService } from '../service-file.service';
 })
 export class AddUserComponent implements OnInit {
   form = new FormGroup({
-    "user": new FormControl('', [Validators.required])
+    "user": new FormControl('', [Validators.required, Validators.minLength(6)])
   })
   classes = 'special';
   inputItem: string = '';
@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit {
   products = Array();
   showDescription = false;
   description= Array();
+  productLength: number = 0;
 
   constructor(private router: Router, private http: HttpClient, private httpService: ServiceFileService) { }
   editList: boolean = false;
@@ -29,12 +30,12 @@ export class AddUserComponent implements OnInit {
         return obj.name
       })
       console.log("products:" , this.products)
+      this.productLength = this.products.length;
       })
   }
   addItem() {
     this.httpService.postRequest({
       "name":this.inputItem,
-      "description": this.description
   }).subscribe(data => {
       console.log("Post request:", data);
     },
@@ -43,6 +44,7 @@ export class AddUserComponent implements OnInit {
     });
     this.products.push(this.inputItem)
     this.inputItem = ''
+    console.log("products" , this.products)
   }
  /* editItem(i: number) {
       this.editList = true;

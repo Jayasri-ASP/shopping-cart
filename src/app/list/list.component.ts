@@ -1,10 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
-import { of } from 'rxjs';
-import { map } from 'rxjs/internal/operators/map';
-
-import { interval } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { ServiceFileService } from '../service-file.service';
 
 @Component({
   selector: 'app-list',
@@ -14,9 +11,10 @@ import { take } from 'rxjs/operators';
 export class ListComponent implements OnInit {
   title: string = ''
   @Input() username = '';
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   ngOnInit(): void {
-  }
+   
+}
 
   OnCancel() {
     this.router.navigateByUrl("/");

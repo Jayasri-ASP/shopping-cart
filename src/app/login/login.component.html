@@ -1,8 +1,18 @@
+<form [formGroup]="heroForm">
+<div class="login">
 <h1>Login</h1>
-<div class="login">
-    Username: <input type="text" [(ngModel)]="username"/>
+<div>
+    Username: <input type="text" [(ngModel)]="username" formControlName="name"/>
 </div>
-<div class="login">
-   Password: <input type="password"/>
+<div *ngIf="name && name.touched && name.invalid" class="alert">**Enter valid username</div>
+<div *ngIf="name  && name.touched && name.errors?.['required']" class="alert">**Name is required</div>
+<div *ngIf="name && name.errors?.['minlength']" class="alert">**Name must be at least 6 characters long</div>
+<div>
+   Password: <input type="password" formControlName="password"/>
 </div>
+<div *ngIf="password && password.touched && password.invalid" class="alert">**Enter valid password</div>
+<div *ngIf="password  && password.touched && password.errors?.['required']" class="alert">**Password is required</div>
+<div *ngIf="password && password.errors?.['minlength']" class="alert">**Password must be at least 8 characters long</div>
 <button (click)="login()">Submit</button>
+</div>
+</form>

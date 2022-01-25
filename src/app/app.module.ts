@@ -22,6 +22,7 @@ import { DynamicComponentDirective } from './dynamic-component/dynamic-component
 import { AdComponent } from './dynamic-component/ad.component';
 import { DynamicComponent } from './dynamic-component/dynamic.component';
 import { DetailsComponent } from './details/details.component';
+import { ViewCartComponent } from './view-cart/view-cart.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DetailsComponent } from './details/details.component';
     HeroProfileComponent,
     DynamicComponentDirective,
     DynamicComponent,
-    DetailsComponent
+    DetailsComponent,
+    ViewCartComponent
 
   ],
   imports: [

@@ -16,7 +16,6 @@ const routes: Routes = [
   {path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard]},
   {path: 'add-user/:id', component: DefaultItemComponent},
   {path: 'contact-details', component: ContactDetailsComponent},
-  { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
   {path: '**', component: NotFoundComponent},
 ];
 

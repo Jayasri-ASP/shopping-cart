@@ -4,20 +4,20 @@
     <button style="margin-left: 370px;background-color: aliceblue;" (click)="logout()">Logout</button>
     <hr>
     <label>Enter item: </label>
-    <input #name="ngModel" type="text" [(ngModel)]="inputItem" required minlength="4"/>   
-    <div *ngIf = "name.touched && name.invalid" class="alert">Item is required ( Template driven validation )</div>
-    <div style="padding-top: 10px;" (click)="addDesc()" > <u>Click to add description</u> </div>
+    <input #name="ngModel" type="text" [(ngModel)]="inputItem" />   
+    <div *ngIf = "name.touched && name.invalid" class="alert">Item is required</div>
+   <!-- <div style="padding-top: 10px;" (click)="addDesc()" > <u>Click to add description</u> </div>
     <form *ngIf="showDescription" [formGroup]="form">
         <label> Enter desciption:</label>
         <input [(ngModel)]="description" type="text" formControlName="user" />
         <div *ngIf="user && user.touched && user.invalid" class="alert">desciption required ( Reactive validation) </div>
-    </form>
+    </form> -->
     <button style="margin-top: 10px;" (click)="addItem()"> Submit </button>
-    <h3 appCustomDirective>Lists:</h3>
+    
+    <h3>Lists:</h3>
+    <app-view-cart [productLength]="productLength"></app-view-cart>
     <div *ngFor="let product of products; let i=index">
         <a routerLink="/add-user/{{i}}" [queryParams]="{ product: product }">{{ product }}</a>
         <button (click)="removeItem(i)">Remove</button>
     </div>
 </div>
-<a routerLink="/contact-details">Contact details</a> |
-<a routerLink="/customers">Customers</a>
