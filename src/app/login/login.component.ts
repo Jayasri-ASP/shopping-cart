@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
      console.log("OnChanges", changes);  
  }
   login() {
+    this.httpService.getUsers()
     localStorage.setItem('token', "true");
     this.router.navigateByUrl('/list');
   }

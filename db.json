@@ -16,5 +16,9 @@
       "name": "item6",
       "id": 6
     }
-  ]
+  ],
+  "users": [{
+    "username": "jayasri",
+    "password": "test123"
+  }]
 }
