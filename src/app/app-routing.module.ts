@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {path: 'list', component: ListComponent, canActivate: [AuthGuard]},
   {path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard]},
-  {path: 'add-user/:id', component: DefaultItemComponent},
+  {path: 'add-user/:id', component: DefaultItemComponent, canActivate: [AuthGuard]},
   {path: 'contact-details', component: ContactDetailsComponent},
   {path: '**', component: NotFoundComponent},
 ];

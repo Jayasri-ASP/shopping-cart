@@ -24,3 +24,10 @@ td {
 .alert { 
     background-color: red;
 }
+.logout {
+    margin-left: 370px;
+    background-color: aliceblue;
+}
+.title {
+    margin-left: 200px;
+}

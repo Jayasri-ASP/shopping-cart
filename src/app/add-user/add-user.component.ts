@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
+import { AuthService } from '../auth-service';
 import { ServiceFileService } from '../service-file.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class AddUserComponent implements OnInit {
   description= Array();
   productLength: number = 0;
 
-  constructor(private router: Router, private http: HttpClient, private httpService: ServiceFileService) { }
+  constructor(private router: Router, private httpService: ServiceFileService, private authService: AuthService) { }
   editList: boolean = false;
   ngOnInit(): void {
     this.httpService.getPosts().subscribe(res => {
@@ -46,9 +46,6 @@ export class AddUserComponent implements OnInit {
     this.inputItem = ''
     console.log("products" , this.products)
   }
- /* editItem(i: number) {
-      this.editList = true;
-  } */
   removeItem(id:number) {
     if(confirm('Are you sure ? ')) {
       this.httpService.deleteRequest(id).subscribe(res=> {
@@ -56,23 +53,17 @@ export class AddUserComponent implements OnInit {
       })
     }
   }
-  done() {
-    this.editList = false;
-
-  }
   OnCancel() {
     this.router.navigateByUrl("/list");
   }
-
   get user() {
     return this.form.get('user')
   }
-
   addDesc() {
     this.showDescription = true;
   }
   logout() {
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('');
+    this.authService.logoutUser()
   }
+  
 }

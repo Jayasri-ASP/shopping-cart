@@ -15,9 +15,10 @@ export class LoginComponent implements OnInit {
   user = '';
   
   constructor(private router: Router, private authService: AuthService, private httpService: ServiceFileService) { }
-  heroForm = new FormGroup({
+  loginForm = new FormGroup({
     "name": new FormControl('', [
       Validators.required,
+      Validators.email,
       Validators.minLength(6),
     ]),
     "password": new FormControl('', [
@@ -26,22 +27,31 @@ export class LoginComponent implements OnInit {
   });
  ngOnInit(): void {
   
-  this.httpService.getUsers().subscribe(res => {
+  /* this.httpService.getUsers().subscribe(res => {
     this.userLogin = JSON.stringify(res)
     Object.values(res).map((obj)=>{
       this.user = obj
     })
     console.log("user", this.user)
-  })
+  })*/
  }
  ngOnChanges(changes: SimpleChanges): void {
      console.log("OnChanges", changes);  
  }
   login() {
-    this.httpService.getUsers()
-    localStorage.setItem('token', "true");
-    this.router.navigateByUrl('/list');
+    const email = this.loginForm.get('name')?.value;
+    const password = this.loginForm.get('password')?.value;
+    this.authService.loginUser(email, password)
+   // localStorage.setItem('token', "true");
+    this.authService.onAuth()
   }
-  get name() { return this.heroForm.get('name'); }
-  get password() { return this.heroForm.get('password');}
+
+  register() {
+    const email = this.loginForm.get('name')?.value;
+    const password = this.loginForm.get('password')?.value;
+    this.authService.registerUser(email,password)
+  }
+
+  get name() { return this.loginForm.get('name'); }
+  get password() { return this.loginForm.get('password');}
 }

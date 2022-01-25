@@ -15,18 +15,16 @@
     {
       "name": "item6",
       "id": 6
+    },
+    {
+      "name": "item7",
+      "id": 7
     }
   ],
-  "users": [{
-    "username": "test1",
-    "password": "test123"
-  },
-  {
-    "username": "test2",
-    "password": "test123"
-  },
-  {
-    "username": "test3",
-    "password": "test123"
-  }]
+  "users": [
+    {
+      "username": "jayasri",
+      "password": "test123"
+    }
+  ]
 }
