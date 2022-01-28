@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
@@ -12,16 +12,15 @@ export class ServiceFileService {
   getPosts() {
     return this.http.get(this.url)
   }
-
-  getUsers() {
-    //return this.http.get("https://run.mocky.io/v3/1e45e371-a0c9-4b53-92b9-53aaec34b063");
-    return this.http.get("http://localhost:3000/users/");
-  }
-  deleteRequest(id: number) {
+  deleteRequest(id: any): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  postRequest(post: any) {
+  postRequest(post: any): Observable<any> {
     return this.http.post(this.url,post)
+  }
+
+  putRequest(id: any, data: any): Observable<any> {
+    return this.http.put(`${this.url}/${id}`, data)
   }
 }

@@ -10,8 +10,12 @@
     
     <h3>Lists:</h3>
     <app-view-cart [productLength]="productLength"></app-view-cart>
-    <div *ngFor="let product of products; let i=index">
-        <a routerLink="/add-user/{{i}}" [queryParams]="{ product: product }">{{ product }}</a>
-        <button (click)="removeItem(i)">Remove</button>
+    <div *ngFor="let product of products">
+        <span (click)="edit()">{{ product.name }}</span>
+       <!-- <button type="button" class="btn btn-link" (click)="editItem(product)">Edit</button> -->
+       <input type="text"
+             *ngIf="isEditable"
+             (keyup.enter)="editItem(inputItem)"/>
+        <button class="delete" (click)="removeItem(product.id)">X</button>
     </div>
 </div>

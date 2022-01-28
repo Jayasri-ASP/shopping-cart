@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnChanges, SimpleChanges, AfterContentChecked, AfterContentInit, AfterViewInit, OnDestroy, AfterViewChecked } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { AuthService } from '../auth-service';
 import { ServiceFileService } from '../service-file.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

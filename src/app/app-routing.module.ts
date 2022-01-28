@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { ContactDetailsComponent } from './contact-details/contact-details.component';
-import { DefaultItemComponent } from './default-item/default-item.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
@@ -14,8 +12,6 @@ const routes: Routes = [
   },
   {path: 'list', component: ListComponent, canActivate: [AuthGuard]},
   {path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard]},
-  {path: 'add-user/:id', component: DefaultItemComponent, canActivate: [AuthGuard]},
-  {path: 'contact-details', component: ContactDetailsComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
