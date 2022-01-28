@@ -12,6 +12,7 @@ button {
 
 input {
     padding: 5px;
+    margin-top: 5px;
 }
 
 table, th, tr, td {
@@ -37,4 +38,7 @@ button.delete {
     color: white;
     padding: 0px 6px;
     width: 2em;
+}
+label {
+    color: green
 }

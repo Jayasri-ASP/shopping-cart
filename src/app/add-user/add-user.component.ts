@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { AuthService } from '../auth-service';
@@ -17,6 +17,7 @@ export class AddUserComponent implements OnInit {
   productLength: number = 0;
   products:any = [];
   isEditable: boolean = false;
+  editedVal : any
   constructor(private router: Router, private httpService: ServiceFileService, private authService: AuthService) { }
   ngOnInit(): void {
     this.getLists();
@@ -47,15 +48,17 @@ export class AddUserComponent implements OnInit {
       })
     }
   }
-  edit() {
-    this.isEditable = true;
+  edit(productId: any) {
+      this.editedVal = productId;
+      this.isEditable = true;
   }
   editItem(product: any) {
     let data = {
       id: new Date().getTime(),
-      name:this.inputItem,
+      name: product.name,
       }
     this.httpService.putRequest(product.id, data).subscribe(res => {
+      this.isEditable = false;
       this.getLists();
     })
   }

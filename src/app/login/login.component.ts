@@ -25,14 +25,6 @@ export class LoginComponent implements OnInit {
       Validators.minLength(8)])
   });
  ngOnInit(): void {
-  
-  /* this.httpService.getUsers().subscribe(res => {
-    this.userLogin = JSON.stringify(res)
-    Object.values(res).map((obj)=>{
-      this.user = obj
-    })
-    console.log("user", this.user)
-  })*/
  }
  ngOnChanges(changes: SimpleChanges): void {
      console.log("OnChanges", changes);  
@@ -41,7 +33,6 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('name')?.value;
     const password = this.loginForm.get('password')?.value;
     this.authService.loginUser(email, password)
-   // localStorage.setItem('token', "true");
     this.authService.onAuth()
   }
 

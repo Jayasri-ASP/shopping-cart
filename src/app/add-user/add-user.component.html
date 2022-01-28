@@ -8,14 +8,19 @@
     <div *ngIf = "name.touched && name.invalid" class="alert">Item is required</div>
     <button style="margin-top: 10px;" (click)="addItem()"> Submit </button>
     
-    <h3>Lists:</h3>
+    <h2>Lists:</h2>
     <app-view-cart [productLength]="productLength"></app-view-cart>
     <div *ngFor="let product of products">
-        <span (click)="edit()">{{ product.name }}</span>
-       <!-- <button type="button" class="btn btn-link" (click)="editItem(product)">Edit</button> -->
-       <input type="text"
-             *ngIf="isEditable"
-             (keyup.enter)="editItem(inputItem)"/>
+        <span (click)="edit(product.id)">{{ product.name }}</span>
         <button class="delete" (click)="removeItem(product.id)">X</button>
+        <div>
+        <label *ngIf="isEditable && product.id === editedVal">**Edit:</label> 
+        <input type="text"
+             *ngIf="isEditable && product.id === editedVal"
+             [(ngModel)]="product.name"
+             (blur)="editItem(product)"
+             />
+        </div>
     </div>
 </div>
+
