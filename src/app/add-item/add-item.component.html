@@ -9,7 +9,7 @@
     <button style="margin-top: 10px;" (click)="addItem()"> Submit </button>
     
     <h2>Lists:</h2>
-    <app-view-cart [productLength]="productLength"></app-view-cart>
+    <p>Cart Items: {{productLength}}</p>
     <div *ngFor="let product of products">
         <span (click)="edit(product.id)">{{ product.name }}</span>
         <button class="delete" (click)="removeItem(product.id)">X</button>

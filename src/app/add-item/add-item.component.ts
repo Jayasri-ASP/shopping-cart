@@ -5,11 +5,11 @@ import { AuthService } from '../auth-service';
 import { ServiceFileService } from '../service-file.service';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css'],
+  selector: 'app-add-item',
+  templateUrl: './add-item.component.html',
+  styleUrls: ['./add-item.component.css']
 })
-export class AddUserComponent implements OnInit {
+export class AddItemComponent implements OnInit {
   form = new FormGroup({
     "user": new FormControl('', [Validators.required, Validators.minLength(6)])
   })

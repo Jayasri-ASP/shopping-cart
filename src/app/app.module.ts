@@ -5,24 +5,19 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
-import { AddUserComponent } from './add-user/add-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ViewCartComponent } from './view-cart/view-cart.component';
 import { AuthService } from './auth-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    AddUserComponent,
     LoginComponent,
-    NotFoundComponent,
-    ViewCartComponent
-
+    NotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
