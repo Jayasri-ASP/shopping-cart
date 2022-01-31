@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'shopping-list';
 
   constructor() {
-    console.log(environment.production) 
+    console.log(environment.apiUrl) 
   }
   ngOnInit(): void {
     const firebaseConfig = {
