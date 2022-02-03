@@ -14,10 +14,10 @@ export class AuthService {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
     .then( res => {
-      console.log(res)
+      console.log(res);
     })
     .catch(error => {
-      console.log(error);
+      alert(error);
     })
   }
 
@@ -25,7 +25,7 @@ export class AuthService {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
     .then( res => {
-      console.log("login response: ",res.user)
+      localStorage.setItem("userId", res.user.email ? res.user.email: '');
     })
     .catch(error => {
       alert("Authentication failed ! Please check the username or password")

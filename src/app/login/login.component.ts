@@ -1,8 +1,6 @@
-import { Component, OnInit, OnChanges, SimpleChanges, AfterContentChecked, AfterContentInit, AfterViewInit, OnDestroy, AfterViewChecked } from '@angular/core';
-import {  Router } from '@angular/router';
-import { AuthService } from '../auth-service';
-import { ServiceFileService } from '../service-file.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { AuthService } from '../auth-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +11,7 @@ export class LoginComponent implements OnInit {
   userLogin = ''
   user = '';
   
-  constructor(private router: Router, private authService: AuthService, private httpService: ServiceFileService) { }
+  constructor(private authService: AuthService) { }
   loginForm = new FormGroup({
     "name": new FormControl('', [
       Validators.required,
@@ -25,9 +23,6 @@ export class LoginComponent implements OnInit {
       Validators.minLength(8)])
   });
  ngOnInit(): void {
- }
- ngOnChanges(changes: SimpleChanges): void {
-     console.log("OnChanges", changes);  
  }
   login() {
     const email = this.loginForm.get('name')?.value;

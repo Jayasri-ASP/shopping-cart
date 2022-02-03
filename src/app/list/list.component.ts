@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { AuthService } from '../auth-service';
 
@@ -9,13 +8,10 @@ import { AuthService } from '../auth-service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  title: string = ''
-  @Input() username = '';
-  constructor(private router: Router, private authService: AuthService, private http: HttpClient) { }
+  constructor(private router: Router, private authService: AuthService) { }
   ngOnInit(): void {
    
 }
-
   OnCancel() {
     this.router.navigateByUrl("/");
   }

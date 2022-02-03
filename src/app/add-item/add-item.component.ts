@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
-import { AuthService } from '../auth-service';
 import { ServiceFileService } from '../service-file.service';
 
 @Component({
@@ -15,10 +14,12 @@ export class AddItemComponent implements OnInit {
   })
   inputItem: string = '';
   productLength: number = 0;
-  products:any = [];
+  products = Object({});
   isEditable: boolean = false;
-  editedVal : any
-  constructor(private router: Router, private httpService: ServiceFileService, private authService: AuthService) { }
+  editedVal : number = 0;
+  errorMessage = Object();
+
+  constructor(private router: Router, private httpService: ServiceFileService) { }
   ngOnInit(): void {
     this.getLists();
   }
@@ -38,38 +39,44 @@ export class AddItemComponent implements OnInit {
       this.getLists();
       this.productLength = this.products.length;
       this.inputItem = '';
-    })
+    }, (error => { 
+        this.errorMessage = error;
+        console.log(this.errorMessage)
+    }));
   }
-  removeItem(id: any) {
+  removeItem(id: number) {
     if(confirm('Are you sure ? ')) {
       this.httpService.deleteRequest(id).subscribe(res=> {
         this.getLists();
         this.productLength = this.products.length;
-      })
+      }, (error => { 
+          this.errorMessage = error;
+          console.log(this.errorMessage)
+      }));
     }
   }
-  edit(productId: any) {
+  edit(productId: number) {
       this.editedVal = productId;
       this.isEditable = true;
   }
-  editItem(product: any) {
+  editItem(product: number, productName: string) {
     let data = {
       id: new Date().getTime(),
-      name: product.name,
+      name: productName,
       }
-    this.httpService.putRequest(product.id, data).subscribe(res => {
+    this.httpService.putRequest(product, data).subscribe(res => {
       this.isEditable = false;
       this.getLists();
-    })
+    }, (error => { 
+        this.errorMessage = error;
+        console.log(this.errorMessage)
+    }));
   }
   OnCancel() {
     this.router.navigateByUrl("/list");
   }
   get user() {
     return this.form.get('user')
-  }
-  logout() {
-    this.authService.logoutUser()
   }
   
 }
