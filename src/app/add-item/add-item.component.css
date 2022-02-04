@@ -12,6 +12,7 @@ button {
 
 input {
     padding: 5px;
+    margin-top: 5px;
 }
 
 table, th, tr, td {
@@ -23,4 +24,20 @@ td {
 }
 .alert { 
     background-color: red;
+}
+.title {
+    margin-left: 200px;
+}
+
+button.delete {
+    background-color: indianred;
+    color: white;
+    padding: 0px 6px;
+    width: 2em;
+}
+label {
+    color: green
+}
+p {
+    margin-left: 415px;
 }

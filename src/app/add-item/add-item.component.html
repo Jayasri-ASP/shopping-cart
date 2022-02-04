@@ -1,0 +1,27 @@
+<div class="adduser">
+    <div class="title"> <b>Shopping Cart</b> </div> 
+    <button class="backbutton" (click)="OnCancel()">Back</button>
+    <app-logout></app-logout>
+    <hr>
+    <label>Enter item: </label>
+    <input #name="ngModel" type="text" [(ngModel)]="inputItem" />   
+    <div *ngIf = "name.touched && name.invalid" class="alert">Item is required</div>
+    <button (click)="addItem()"> Submit </button>
+    
+    <h2>Lists:</h2>
+    <p>Cart Items: {{productLength}}</p>
+    <div *ngFor="let product of products">
+        <span (click)="edit(product.id)">{{ product.name }}</span>
+        <button class="delete" (click)="removeItem(product.id)">X</button>
+        <div>
+        <label *ngIf="isEditable && product.id === editedVal">**Edit:</label> 
+        <input type="text"
+             *ngIf="isEditable && product.id === editedVal"
+             [(ngModel)]="product.name"
+             (blur)="editItem(product.id, product.name)"
+             />
+        </div>
+    </div>
+</div>
+
+

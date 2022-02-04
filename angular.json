@@ -11,7 +11,7 @@
         }
       },
       "i18n": {
-        "sourceLocale":"en-US",
+        "sourceLocale": "en-US",
         "locales": {
           "ru": "src/i18n/messages.xlf"
         }
@@ -37,7 +37,6 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "webWorkerTsConfig": "tsconfig.worker.json",
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },
@@ -84,7 +83,6 @@
               ],
               "outputHashing": "all"
             },
-
             "ru": {
               "aot": true,
               "outputPath": "dist/i18ntranslate/"
@@ -137,8 +135,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "webWorkerTsConfig": "tsconfig.worker.json"
+            "scripts": []
           }
         },
         "server": {
@@ -208,9 +205,21 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "shopping-list"
+  "defaultProject": "shopping-list",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
