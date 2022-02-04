@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthService } from './auth-service';
+import { AuthServiceService } from './auth-service/auth-service.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { AuthService } from './auth-service';
     ReactiveFormsModule,
     SharedModule  ],
   providers: [
-    AuthService
+    AuthServiceService
   ],
   bootstrap: [AppComponent] // root component
 })

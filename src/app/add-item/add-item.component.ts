@@ -14,7 +14,7 @@ export class AddItemComponent implements OnInit {
   })
   inputItem: string = '';
   productLength: number = 0;
-  products = Object({});
+  products = Object();
   isEditable: boolean = false;
   editedVal : number = 0;
   errorMessage = Object();

@@ -16,19 +16,19 @@ export class ServiceFileService {
       catchError(this.handleError)
     )
   }
-  deleteRequest(id: number): Observable<any> {
+  deleteRequest(id: number): Observable<Object> {
     return this.http.delete(`${this.url}/${id}`).pipe(
       catchError(this.handleError)
     )
   }
 
-  postRequest(post: Object): Observable<any> {
+  postRequest(post: Object): Observable<Object> {
     return this.http.post(this.url,post).pipe(
       catchError(this.handleError)
     )
   }
 
-  putRequest(id: number, data: Object): Observable<any> {
+  putRequest(id: number, data: Object): Observable<Object> {
     return this.http.put(`${this.url}/${id}`, data).pipe(
       catchError(this.handleError)
     )

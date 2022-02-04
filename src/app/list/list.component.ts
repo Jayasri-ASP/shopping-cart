@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {  Router } from '@angular/router';
-import { AuthService } from '../auth-service';
-
+import { AuthServiceService } from '../auth-service/auth-service.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) { }
-  ngOnInit(): void {
-   
-}
+export class ListComponent {
+  constructor(private router: Router, private authService: AuthServiceService) { }
   OnCancel() {
     this.router.navigateByUrl("/");
   }

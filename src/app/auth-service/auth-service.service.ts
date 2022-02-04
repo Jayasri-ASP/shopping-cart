@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import "firebase/auth";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
 import {  Router } from '@angular/router';
-
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthServiceService {
+
   isLoggedIn: boolean = false;
+  userId: string = '';
   constructor(private router: Router) { }
 
   registerUser(email: string, password: string) {
@@ -25,7 +26,8 @@ export class AuthService {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
     .then( res => {
-      localStorage.setItem("userId", res.user.email ? res.user.email: '');
+      this.userId =  res.user.email ? res.user.email: '';
+      this.setData('userId',this.userId)
     })
     .catch(error => {
       alert("Authentication failed ! Please check the username or password")
@@ -49,5 +51,15 @@ export class AuthService {
       this.router.navigateByUrl('/')
     }
   });
+  }
+
+  setData(key: string, value: string) {
+    localStorage.setItem(key, value)
+  }
+  getData(key: string) {
+    return localStorage.getItem(key)
+  }
+  removeData(key: string) {
+    localStorage.removeItem(key);
   }
 }
